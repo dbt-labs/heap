@@ -10,6 +10,7 @@ data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
 
 models:
   vars:
-    users_table:      #table
-    sessions_table:   #table
-    events_table:     #table
+    users_table:      #schema.table
+    sessions_table:
+    events_table:
+    referrers_table:
