@@ -17,9 +17,9 @@ select
   rtrim(landing_page, '/') as landing_page,
   browser,
   search_keyword,
-  utm_source,
-  utm_campaign,
-  utm_medium,
-  utm_term,
-  utm_content
+  nullif(utm_source, '') as utm_source,
+  nullif(utm_campaign, '') as utm_campaign,
+  nullif(utm_medium, '') as utm_medium,
+  nullif(utm_term, '') as utm_term,
+  nullif(utm_content, '') as utm_content
 from {{var('sessions_table')}}
