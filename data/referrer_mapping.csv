@@ -231,7 +231,6 @@ search,Google Blogsearch,blogsearch.google.com.gt
 search,Google Blogsearch,blogsearch.google.com.hk
 search,Google Blogsearch,blogsearch.google.com.jm
 search,Google Blogsearch,blogsearch.google.com.kh
-search,Google Blogsearch,blogsearch.google.com.kh
 search,Google Blogsearch,blogsearch.google.com.kw
 search,Google Blogsearch,blogsearch.google.com.lb
 search,Google Blogsearch,blogsearch.google.com.lc
@@ -633,7 +632,6 @@ search,Google Images,google.tt/imgres
 search,Google Images,google.us/imgres
 search,Google Images,google.vg/imgres
 search,Google Images,google.vu/imgres
-search,Google Images,images.google.ws
 search,Google Images,images.google.ac
 search,Google Images,images.google.ad
 search,Google Images,images.google.ae
@@ -709,7 +707,6 @@ search,Google Images,images.google.com.gi
 search,Google Images,images.google.com.gt
 search,Google Images,images.google.com.hk
 search,Google Images,images.google.com.jm
-search,Google Images,images.google.com.kh
 search,Google Images,images.google.com.kh
 search,Google Images,images.google.com.kw
 search,Google Images,images.google.com.lb
@@ -932,7 +929,6 @@ search,Google News,news.google.com.gt
 search,Google News,news.google.com.hk
 search,Google News,news.google.com.jm
 search,Google News,news.google.com.kh
-search,Google News,news.google.com.kh
 search,Google News,news.google.com.kw
 search,Google News,news.google.com.lb
 search,Google News,news.google.com.lc
@@ -1154,7 +1150,6 @@ search,Google,www.google.com.jm
 search,Google,www.google.jo
 search,Google,www.google.co.jp
 search,Google,www.google.co.ke
-search,Google,www.google.com.kh
 search,Google,www.google.ki
 search,Google,www.google.kg
 search,Google,www.google.co.kr
@@ -1286,7 +1281,6 @@ search,Google,google.com.by
 search,Google,google.by
 search,Google,google.com.bz
 search,Google,google.ca
-search,Google,google.com.kh
 search,Google,google.cc
 search,Google,google.cd
 search,Google,google.cf
@@ -1729,7 +1723,6 @@ search,Google Product Search,google.com.gt/products
 search,Google Product Search,google.com.hk/products
 search,Google Product Search,google.com.jm/products
 search,Google Product Search,google.com.kh/products
-search,Google Product Search,google.com.kh/products
 search,Google Product Search,google.com.kw/products
 search,Google Product Search,google.com.lb/products
 search,Google Product Search,google.com.lc/products
@@ -1926,7 +1919,6 @@ search,Google Product Search,www.google.com.gt/products
 search,Google Product Search,www.google.com.hk/products
 search,Google Product Search,www.google.com.jm/products
 search,Google Product Search,www.google.com.kh/products
-search,Google Product Search,www.google.com.kh/products
 search,Google Product Search,www.google.com.kw/products
 search,Google Product Search,www.google.com.lb/products
 search,Google Product Search,www.google.com.lc/products
@@ -2061,7 +2053,6 @@ search,Everyclick,www.everyclick.com
 search,Rakuten,websearch.rakuten.co.jp
 search,Naver,search.naver.com
 search,DasOertliche,www.dasoertliche.de
-search,Yahoo!,search.yahoo.com
 search,Yahoo!,yahoo.com
 search,Yahoo!,ar.search.yahoo.com
 search,Yahoo!,ar.yahoo.com
@@ -2082,8 +2073,6 @@ search,Yahoo!,dk.yahoo.com
 search,Yahoo!,es.search.yahoo.com
 search,Yahoo!,es.yahoo.com
 search,Yahoo!,espanol.searchpanol.yahoo.com
-search,Yahoo!,espanol.searchpanol.yahoo.com
-search,Yahoo!,espanol.yahoo.com
 search,Yahoo!,espanol.yahoo.com
 search,Yahoo!,fr.search.yahoo.com
 search,Yahoo!,fr.yahoo.com
@@ -2102,11 +2091,7 @@ search,Yahoo!,nz.yahoo.com
 search,Yahoo!,one.cn.yahoo.com
 search,Yahoo!,one.searchn.yahoo.com
 search,Yahoo!,qc.search.yahoo.com
-search,Yahoo!,qc.search.yahoo.com
-search,Yahoo!,qc.search.yahoo.com
 search,Yahoo!,qc.yahoo.com
-search,Yahoo!,qc.yahoo.com
-search,Yahoo!,se.search.yahoo.com
 search,Yahoo!,se.search.yahoo.com
 search,Yahoo!,se.yahoo.com
 search,Yahoo!,search.searcharch.yahoo.com
