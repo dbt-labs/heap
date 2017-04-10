@@ -1,3 +1,13 @@
+{{
+    config(
+        materialized = 'incremental',
+        sort = 'session_start_time',
+        dist = 'session_id',
+        sql_where = 'TRUE',
+        unique_key = 'session_id'
+    )
+}}
+
 {%
 set window_clause = "partition by session_id
     order by session_start_time
@@ -8,6 +18,13 @@ set window_clause = "partition by session_id
 with base as (
 
     select * from {{var('sessions_table')}}
+
+    {% if adapter.already_exists(this.schema, this.name) %}
+
+    where "time" >=
+        (select dateadd(hour, -1, max(session_start_time)) from {{this}})
+
+    {% endif %}
 
 ),
 

@@ -1,9 +1,25 @@
---unfortunately, it doesn't seem that heap ensures uniqueness across values in session_id.
---this causes duplication when handling joins and these models don't yet account for it.
+{{
+    config(
+        materialized = 'incremental',
+        sort = 'session_start_time',
+        dist = 'session_id',
+        sql_where = 'TRUE',
+        unique_key = 'session_id'
+    )
+}}
+
+{% set this_exists = adapter.already_exists(this.schema, this.name) %}
 
 with sessions as (
 
   select * from {{ref('heap_sessions')}}
+
+  {% if this_exists %}
+
+  where session_start_time >=
+    (select dateadd(hour, -1, max(session_start_time)) from {{this}})
+
+  {% endif %}
 
 ), events as (
 
@@ -20,6 +36,13 @@ with sessions as (
     max("time") as session_end_time,
     count(*) as event_count
   from events
+
+  {% if this_exists %}
+
+  where session_id in (select session_id from sessions)
+
+  {% endif %}
+
   group by 1
 
 ), referring_domains as (
