@@ -13,4 +13,3 @@ models:
     users_table:      #schema.table
     sessions_table:
     events_table:
-    referrers_table:
