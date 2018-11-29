@@ -1,5 +1,5 @@
 view: web_sessions {
-  sql_table_name: {{_user_attributes['dbt_schema']}}.fct_web_sessions ;;
+  sql_table_name: {{_user_attributes['dbt_schema']}}.heap_sessions_xf ;;
 
   # ----------------------------------------------------- IDs
 
@@ -285,36 +285,6 @@ view: web_sessions {
     type: number
     sql: ${bounced_sessions}::float / nullif(${sessions}, 0) ;;
     value_format_name: percent_1
-  }
-
-}
-
-view: web_sessions_ad_performance {
-
-  extends: [web_sessions]
-
-  derived_table: {
-    sql:
-      select
-          *,
-          md5(
-            ''
-            {% if web_sessions_ad_performance.ad_platform._in_query %} || coalesce(ad_platform, '') {% endif %}
-            {% if web_sessions_ad_performance.utm_medium._in_query %} || coalesce(utm_medium, '') {% endif %}
-            {% if web_sessions_ad_performance.utm_source._in_query %} || coalesce(utm_source, '') {% endif %}
-            {% if web_sessions_ad_performance.utm_campaign._in_query %} || coalesce(utm_campaign, '') {% endif %}
-            {% if web_sessions_ad_performance.utm_term._in_query %} || coalesce(utm_term, '') {% endif %}
-            {% if web_sessions_ad_performance.utm_content._in_query %} || coalesce(utm_content, '') {% endif %}
-
-            ) as auto_ad_id
-      from {{_user_attributes['dbt_schema']}}.web_sessions
-    ;;
-  }
-
-  dimension: auto_ad_id {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.auto_ad_id ;;
   }
 
 }
