@@ -50,7 +50,7 @@ with sessions as (
 
     select
       s.*,
-      row_number() over (partition by s.user_id order by s.session_start_time) as user_sessionidx,
+      row_number() over (partition by s.user_id order by s.session_start_time) as user_sesionidx,
       ea.session_end_time,
       ea.event_count,
       referrers.medium as referrer_medium,
