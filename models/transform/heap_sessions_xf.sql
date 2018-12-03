@@ -9,11 +9,11 @@
 
 with sessions as (
 
-  select * from {{ref('heap_sessions')}}
+    select * from {{ref('heap_sessions')}}
 
 ), events as (
 
-  select * from {{ref('heap_events')}}
+    select * from {{ref('heap_events')}}
 
 ), referrers as (
 
