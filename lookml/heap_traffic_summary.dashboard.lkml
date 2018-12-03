@@ -522,7 +522,7 @@
     col: 16
     width: 8
     height: 4
-
+    
   filters:
   - name: Date Filter
     title: Date Filter
