@@ -42,13 +42,16 @@ with sessions as (
 ), referring_domains as (
 
     select
+    
         *,
         ltrim(split_part(split_part(referrer, '//', 2), '/', 1), 'www.') as referring_domain
+        
     from sessions
 
 ), joined as (
 
     select
+    
       s.*,
       row_number() over (partition by s.user_id order by s.session_start_time) as user_sesionidx,
       ea.session_end_time,
@@ -56,7 +59,8 @@ with sessions as (
       referrers.medium as referrer_medium,
       referrers.source as referrer_source,
       coalesce(users."identity", s.user_id::varchar) as blended_user_id,
-      {{heap.get_url_parameter('ea.first_page_query', 'gclid')}} as gclid
+      {{ dbt_utils.get_url_parameter('ea.first_page_query', 'gclid') }} as gclid
+      
     from referring_domains s
       left outer join events_agg ea on s.session_id = ea.session_id
       left outer join referrers on s.referring_domain = referrers.domain
