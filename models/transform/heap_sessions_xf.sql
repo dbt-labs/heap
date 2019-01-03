@@ -44,7 +44,7 @@ with sessions as (
     select
     
         *,
-        ltrim({{dbt_utils.split_part(dbt_utils.split_part('referrer', "'//'", 2), "'/'", 1)}}, 'www.')
+        ltrim({{dbt_utils.get_url_host('referrer')}}, 'www.')
             as referring_domain
         
     from sessions
