@@ -1,7 +1,8 @@
 {{ config(
-    materialized = 'table',
+    materialized = 'incremental',
     sort = 'session_start_time',
-    dist = 'session_id'
+    dist = 'session_id',
+    unique_key = 'session_id'
     )}}
 
 --unfortunately, it doesn't seem that heap ensures uniqueness across values in session_id.
@@ -10,10 +11,17 @@
 with sessions as (
 
     select * from {{ref('heap_sessions')}}
+    {% if is_incremental() %}
+    where session_start_time >= (select dateadd(hour, -3, max(session_start_time)) from {{this}})
+    {% endif %}
 
 ), events as (
 
     select * from {{ref('heap_events')}}
+    
+    {% if is_incremental() %}
+    where "time" >= (select dateadd(hour, -5, max(session_start_time)) from {{this}})
+    {% endif %}
 
 ), referrers as (
 

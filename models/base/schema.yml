@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: heap_events
+    
+    columns:
+        - name: event_id
+          tests:
+              - unique
+              - not_null
+              
+  - name: heap_sessions
+    
+    columns:
+        - name: session_id
+          tests:
+              - unique
+              - not_null
+              
+  - name: heap_users
+    
+    columns:
+        - name: user_id
+          tests:
+              - unique
+              - not_null

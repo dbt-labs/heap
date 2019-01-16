@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: heap_sessions_xf
+    
+    columns:
+        - name: session_id
+          tests:
+              - unique
+              - not_null
