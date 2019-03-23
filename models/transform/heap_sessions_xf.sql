@@ -20,7 +20,7 @@ with sessions as (
     select * from {{ref('heap_events')}}
     
     {% if is_incremental() %}
-    where "time" >= (select dateadd(hour, -5, max(session_start_time)) from {{this}})
+    where event_time >= (select dateadd(hour, -5, max(session_start_time)) from {{this}})
     {% endif %}
 
 ), referrers as (
@@ -36,12 +36,12 @@ with sessions as (
     select distinct 
         
         session_id,
-        max("time") over (partition by session_id) as session_end_time,
+        max(event_time) over (partition by session_id) as session_end_time,
         count(*) over (partition by session_id) as event_count,
         
         first_value(query) over (
             partition by session_id 
-            order by "time" 
+            order by event_time 
             rows between unbounded preceding and unbounded following
             ) as first_page_query
             
@@ -62,12 +62,13 @@ with sessions as (
     select
     
       s.*,
-      row_number() over (partition by s.user_id order by s.session_start_time) as user_sesionidx,
+      row_number() over (partition by s.user_id order by s.session_start_time) 
+        as user_sesionidx,
       ea.session_end_time,
       ea.event_count,
       referrers.medium as referrer_medium,
       referrers.source as referrer_source,
-      coalesce(users."identity", s.user_id::varchar) as blended_user_id,
+      coalesce(users.user_identity, s.user_id::varchar) as blended_user_id,
       {{ dbt_utils.get_url_parameter('ea.first_page_query', 'gclid') }} as gclid
       
     from referring_domains s
