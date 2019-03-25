@@ -53,11 +53,7 @@ cleaned as (
 
         user_id,
         session_id,
-        {% if target.type == 'redshift' %}
-            "time" as session_start_time,
-        {% else %}
-            time as session_start_time,
-        {% endif %}
+        {{heap.time_field('session_start_time')}},
         
         library,
         platform,

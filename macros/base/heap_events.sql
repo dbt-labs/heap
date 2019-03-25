@@ -4,17 +4,13 @@
 
 {% endmacro %}
 
+
 {% macro default__heap_events() %}
 
 select 
     
     *,
-    
-    {% if target.type == 'redshift' %}
-        "time" as event_time
-    {% else %}
-        time as event_time
-    {% endif %}
+    {{heap.time_field('event_time')}}
     
 from {{var('events_table')}}
 

@@ -17,11 +17,7 @@ select distinct
 
     user_id,
     last_value(
-        {% if target.type == 'redshift' %}
-            "identity"    
-        {% else %}
-            identity
-        {% endif %}
+        {{heap.identity_field()}}
         ) over ( {{window_clause}} ) as user_identity,
     last_value(lower(email)) over ( {{window_clause}} ) as email,
     min(joindate) over ( {{window_clause}} ) as joindate
