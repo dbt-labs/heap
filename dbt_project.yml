@@ -9,7 +9,8 @@ test-paths: ["test"]       # where to store test results
 data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
 
 models:
-  vars:
-    users_table:      #schema.table
-    sessions_table:
-    events_table:
+  heap:
+    vars:
+      users_table:      #schema.table
+      sessions_table:   #schema.table
+      events_table:     #schema.table
