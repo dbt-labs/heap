@@ -15,10 +15,10 @@
 
 select distinct
 
-    user_id,
-    last_value(
+    lower(user_id),
+    lower(last_value(
         {{heap.identity_field()}}
-        ) over ( {{window_clause}} ) as user_identity,
+                ) over ( {{window_clause}} )) as user_identity,
     last_value(lower(email)) over ( {{window_clause}} ) as email,
     min(joindate) over ( {{window_clause}} ) as joindate
     

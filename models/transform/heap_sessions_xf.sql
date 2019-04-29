@@ -68,7 +68,7 @@ with sessions as (
       ea.event_count,
       referrers.medium as referrer_medium,
       referrers.source as referrer_source,
-      lower(coalesce(users.user_identity, s.user_id::varchar)) as blended_user_id,
+      coalesce(users.user_identity, s.user_id::varchar) as blended_user_id,
       {{ dbt_utils.get_url_parameter('ea.first_page_query', 'gclid') }} as gclid
       
     from referring_domains s
