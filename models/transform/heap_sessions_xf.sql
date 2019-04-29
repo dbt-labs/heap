@@ -63,12 +63,12 @@ with sessions as (
     
       s.*,
       row_number() over (partition by s.user_id order by s.session_start_time) 
-        as user_sesionidx,
+        as user_sessionidx,
       ea.session_end_time,
       ea.event_count,
       referrers.medium as referrer_medium,
       referrers.source as referrer_source,
-      coalesce(users.user_identity, s.user_id::varchar) as blended_user_id,
+      lower(coalesce(users.user_identity, s.user_id::varchar)) as blended_user_id,
       {{ dbt_utils.get_url_parameter('ea.first_page_query', 'gclid') }} as gclid
       
     from referring_domains s
