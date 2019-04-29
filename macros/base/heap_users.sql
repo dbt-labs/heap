@@ -15,7 +15,7 @@
 
 select distinct
 
-    lower(user_id),
+    lower(user_id) as user_id,
     lower(last_value(
         {{heap.identity_field()}}
                 ) over ( {{window_clause}} )) as user_identity,
