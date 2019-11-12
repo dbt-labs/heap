@@ -8,7 +8,7 @@ clean-targets: ["target, dbt_modules"]  # directories removed by the clean task
 test-paths: ["test"]       # where to store test results
 data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
 
-require-dbt-version: "dbt >= 0.15.0"
+require-dbt-version: ">=0.15.0"
 
 models:
   heap:
