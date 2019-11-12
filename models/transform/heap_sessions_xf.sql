@@ -66,14 +66,14 @@ with sessions as (
         as user_sessionidx,
       ea.session_end_time,
       ea.event_count,
-      referrers.{{ adapter.quote('medium') }} as medium,
+      referrers.{{ adapter.quote('medium') }} as referrer_medium,
       referrers.{{ adapter.quote('source') }} as referrer_source,
       coalesce(users.user_identity, s.user_id::varchar) as blended_user_id,
       {{ dbt_utils.get_url_parameter('ea.first_page_query', 'gclid') }} as gclid
       
     from referring_domains s
       left outer join events_agg ea on s.session_id = ea.session_id
-      left outer join referrers on s.referring_domain = referrers.domain
+      left outer join referrers on s.referring_domain = referrers.{{ adapter.quote('domain') }}
       left outer join users on s.user_id = users.user_id
 
 )
