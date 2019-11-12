@@ -1,7 +1,7 @@
 # heap
 Open source analytics for Heap SQL
 
-Requires dbt >= 0.12.2
+Requires dbt >= 0.15.0
 
 ## Installation
 
