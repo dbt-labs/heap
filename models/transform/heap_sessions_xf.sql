@@ -73,7 +73,7 @@ with sessions as (
       
     from referring_domains s
       left outer join events_agg ea on s.session_id = ea.session_id
-      left outer join referrers on s.referring_domain = referrers.domain
+      left outer join referrers on s.referring_domain = referrers.{{ adapter.quote('domain') }}
       left outer join users on s.user_id = users.user_id
 
 )
