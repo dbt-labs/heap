@@ -4,7 +4,7 @@ models:
   - name: heap_events
     
     columns:
-        - name: event_id
+        - name: event_id || session_id || user_id || event_table_name
           tests:
               - unique
               - not_null
