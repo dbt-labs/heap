@@ -9,10 +9,3 @@ test-paths: ["test"]       # where to store test results
 data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
 
 require-dbt-version: ">=0.15.0"
-
-models:
-  heap:
-    vars:
-      users_table:      #schema.table
-      sessions_table:   #schema.table
-      events_table:     #schema.table
